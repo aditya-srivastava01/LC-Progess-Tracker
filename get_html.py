@@ -1,6 +1,5 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-import mysql.connector
 import codecs
 import os
 import time
@@ -26,7 +25,9 @@ def fetch(name,last_page):
     driver.quit()
 
 
-for pg in range(351,0,-1):
+for pg in range(340,0,-1):    
+    opt = Options()
+    opt.add_argument("--headless=new")
     driver = webdriver.Chrome()
     driver.get(f"https://leetcode.com/contest/weekly-contest-{pg}/ranking")
     last_page = driver.find_elements('css selector', '.page-btn')
